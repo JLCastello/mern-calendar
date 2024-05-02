@@ -7,7 +7,7 @@ const getEventos = async( req, res = response ) => {
 
     res.json({
         ok: true,
-        msg: eventos
+        eventos
     });
 
 }
@@ -59,7 +59,7 @@ const actualizarEvento = async( req, res = response ) => {
             return res.status(401).json({
                 ok: false,
                 msg: 'No tienes permisos para editar este evento'
-            })
+            });
         }
 
         const nuevoEvento = {
@@ -71,8 +71,8 @@ const actualizarEvento = async( req, res = response ) => {
 
         res.json({
             ok: true,
-            msg: eventoActualizado
-        })
+            evento: eventoActualizado
+        });
         
     } catch (error) {
 
@@ -80,7 +80,7 @@ const actualizarEvento = async( req, res = response ) => {
         res.status(500).json({
             ok: false,
             msg: 'Hable con el administrador'
-        })
+        });
         
     }
 
@@ -106,7 +106,7 @@ const eliminarEvento = async( req, res = response ) => {
             return res.status(401).json({
                 ok: false,
                 msg: 'No tienes permisos para eliminar este evento'
-            })
+            });
         }
 
         await Evento.findByIdAndDelete( eventoId );
@@ -114,7 +114,7 @@ const eliminarEvento = async( req, res = response ) => {
         res.json({
             ok: true,
             msg: 'Evento eliminado'
-        })
+        });
         
     } catch (error) {
 
@@ -122,7 +122,7 @@ const eliminarEvento = async( req, res = response ) => {
         res.status(500).json({
             ok: false,
             msg: 'Hable con el administrador'
-        })
+        });
         
     }
 
