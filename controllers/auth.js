@@ -74,7 +74,7 @@ const loginUsuario = async( req, res = response ) => {
             });
         }
 
-        //Generar JWT
+        // Generar JWT
         const token = await generarJWT( usuario.id, usuario.name );
 
         res.json({
@@ -92,7 +92,7 @@ const loginUsuario = async( req, res = response ) => {
             ok: false,
             msg: 'Por favor, hable con el administrador'
         });
-        
+
     }
 
 }
@@ -116,5 +116,5 @@ const revalidarToken = async( req, res = response ) => {
 module.exports = {
     crearUsuario,
     loginUsuario,
-    revalidarToken,
+    revalidarToken
 }
